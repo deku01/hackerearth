@@ -48,3 +48,34 @@ class vowelRecognition {
 		}
     }
 }
+
+
+/*
+Alogrithm Explanation:
+I'll try to explain it by an example:
+Let's say the string is baceb. Now we do a loop through the chars:
+b: not a vowel, so continue with next char
+a: a vowel; now we have 2 possibilities for left substring [ba, a] and 4 possibilities for right substring [a, ac, ace, aceb]. So this 'a' contributes 2*4=8 to the answer.
+c: not a vowel
+e: a vowel, left substrings [bace,ace,ce,e], i.e. 4 substrings, right substrings [e,eb], i.e. 2 substrings. So again the contribution is 2*4=8.
+b: not a vowel
+
+Now we can derived a formula: (strlen-i)*(i+1)
+formula for each vowel count is------> ( length of String - index of vowel ) * ( index + 1 )
+which comes out as:
+# Starting with this vowel and containing string of single vowel also
+==> ( length of String - index )
+# Ending with this vowel and not containing single of single vowel
+==> ( index )
+# Containing this vowel in between
+==> ( length of String - index - 1 ) * index
+therefore,
+total no of strings having this vowel = ( length of String - index ) + ( index ) + ( length of String - index - 1 ) * index
+==> length of String + length of String * index - index * index - index
+==> length of String ( 1 + index ) - index (1 + index )
+==> ( 1 + index ) * ( length of String - index ) =====>>>> ANSWER 
+
+In total that's an answer of 16 for this example.
+Does that help?
+
+*/
